@@ -1,0 +1,15 @@
+.home__header {
+    min-height: 50px;
+    padding: 10px 10px;
+    box-shadow: 1px 1px 7px #A7A7A7;
+}
+
+.home__header__logo > img {
+    width: 105px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.home__header__menu__items > p {
+    cursor: pointer;
+}
