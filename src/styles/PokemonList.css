@@ -2,7 +2,111 @@
     box-shadow: 1px 1px 7px #A7A7A7;
     border: 1px solid #A7A7A7;
     border-radius: 10px;
-    padding: 0px 20px;
+    padding: 20px;
     margin-bottom: 30px;
-    height: 50px;
+}
+
+.pokemon__card p {
+    margin-bottom: 0;
+}
+
+.pokemon__card img {
+    width: 68px;
+    height: 42px;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+.pokemon__card__info {
+    border: 1px solid #DEE2E6;
+    border-radius: 0 0 10px 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button__info,
+.button__volver {
+    color: #FFFFFF;
+    background-color: #EF5350;
+    font-size: 13px;
+}
+
+.pokemon-type-box {
+    background-color: gray;
+    border-radius: 10px;
+    padding: 4px 10px;
+}
+
+.pokemon-type-box.normal {
+    background-color: #A8A77A !important;
+}
+
+.pokemon-type-box.fire {
+    background-color: #EE8130 !important;
+}
+
+.pokemon-type-box.electric {
+    background-color: #F7D02C !important;
+}
+
+.pokemon-type-box.grass {
+    background-color: #7AC74C !important;
+}
+
+.pokemon-type-box.ice {
+    background-color: #96D9D6 !important;
+}
+
+.pokemon-type-box.fighting {
+    background-color: #C22E28 !important;
+}
+
+.pokemon-type-box.poison {
+    background-color: #A33EA1 !important;
+}
+
+.pokemon-type-box.ground {
+    background-color: #E2BF65 !important;
+}
+
+.pokemon-type-box.flying {
+    background-color: #A98FF3 !important;
+}
+
+.pokemon-type-box.psychic {
+    background-color: #F95587 !important;
+}
+
+.pokemon-type-box.bug {
+    background-color: #A6B91A !important;
+}
+
+.pokemon-type-box.rock {
+    background-color: #B6A136 !important;
+}
+
+.pokemon-type-box.ghost {
+    background-color: #735797 !important;
+}
+
+.pokemon-type-box.dragon {
+    background-color: #6F35FC !important;
+}
+
+.pokemon-type-box.dark {
+    background-color: #705746 !important;
+}
+
+.pokemon-type-box.steel {
+    background-color: #B7B7CE !important;
+}
+
+.pokemon-type-box.fairy {
+    background-color: #D685AD !important;
+}
+
+.nav__gen li{
+    cursor: pointer;
 }
