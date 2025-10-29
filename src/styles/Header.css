@@ -10,6 +10,11 @@
     cursor: pointer;
 }
 
-.home__header__menu__items > p {
+.home__header__menu__items {
+    display: flex;
+    gap: 1rem;
+}
+
+.home__header__menu__items > span {
     cursor: pointer;
 }

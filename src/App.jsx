@@ -1,15 +1,19 @@
-import { useState } from 'react'
 import './App.css'
 import Header from './components/header/Header'
-import HomeOut from './components/out/HomeOut'
 import { BrowserRouter } from 'react-router-dom'
-import RouterOut from './routes/RouterOut'
+import RouterMain from './routes/RouterMain'
+import { AuthProvider } from './components/auth/AuthProvider'
+import { LoadingProvider } from './context/LoadingContext'
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <RouterOut />
+      <AuthProvider>
+        <LoadingProvider>
+          <Header />
+          <RouterMain />
+        </LoadingProvider>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

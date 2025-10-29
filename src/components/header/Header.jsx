@@ -1,8 +1,11 @@
 import "../../styles/Header.css"
 import pokeapiLogo from "../../assets/logo_pokeapi.webp"
 import { useNavigate } from "react-router-dom"
+import { useAuth } from "../auth/AuthProvider";
 
 export default function Header () {
+
+    const {usuario, logout} = useAuth();
 
     const navigate = useNavigate();
 
@@ -12,15 +15,18 @@ export default function Header () {
 
     return (
         <div className="home__header">
-            <div className="container d-flex justify-content-between">
-                <div className="home__header__logo" onClick={() => goToPage('/')}>
+            <div className="container d-flex justify-content-between align-items-center">
+                <div className="home__header__logo" onClick={() => goToPage(usuario ? '/pokedex/pokemon-list' : '/')}>
                     <img src={pokeapiLogo} />
                 </div>
-                <div className="home__header__menu" onClick={() => goToPage('/pokemon-list')}>
-                    <div className="home__header__menu__items">
-                        <p>Lista de Pokémon</p>
+                { usuario &&
+                    <div className="home__header__menu" onClick={logout}>
+                        <div className="home__header__menu__items">
+                            <span>Cerrar sesión</span>
+                            <span>Ver perfil</span>
+                        </div>
                     </div>
-                </div>
+                }
             </div>
             
         </div>

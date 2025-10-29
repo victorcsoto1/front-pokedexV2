@@ -2,16 +2,18 @@ import { useEffect, useState } from "react"
 import { getFilteredPokemon, getPokemonList } from "../../services/pokeapiService"
 import { limitePokemon } from "../../environments/variables"
 import PokemonCard from "./PokemonCard"
-import LoaderScreen from "../loaders/LoaderScreen"
+import { useLoading } from "../../context/LoadingContext"
+import { getToken } from "../../utils/auth"
 
 export default function PokemonList () {
+
+    const {setLoading} = useLoading();
 
     const [pokemonList, setPokemonList] = useState()
     const [currentPage, setCurrentPage] = useState(1)
     const [totalPages, setTotalPages] = useState(0)
     const [currentItems, setCurrentItems] = useState([])
     const [textPokemon, setTextPokemon] = useState('')
-    const [loading, setLoading] = useState(true)
 
     const itemsPerPage = 50
 
@@ -26,7 +28,8 @@ export default function PokemonList () {
 
     const searchPokemon = () => {
         setLoading(true)
-        getFilteredPokemon(limitePokemon, textPokemon).then((resp) => {
+        setCurrentPage(1)
+        getFilteredPokemon(limitePokemon, textPokemon, getToken()).then((resp) => {
             setPokemonList(resp)
             setLoading(false)
         })
@@ -37,7 +40,8 @@ export default function PokemonList () {
     }
 
     useEffect(() => {
-        getPokemonList(limitePokemon).then((resp) => {
+        setLoading(true)
+        getPokemonList(limitePokemon, getToken()).then((resp) => {
             setPokemonList(resp)
             setLoading(false)
         })
@@ -54,9 +58,6 @@ export default function PokemonList () {
 
     return (
         <>
-            {
-                loading && <LoaderScreen />
-            }
             <div className="container">
                 <div className="pokelist__header pb-5 pt-5">
                     <h1>Listado de pokémon</h1>
@@ -64,7 +65,7 @@ export default function PokemonList () {
                 <div className="pokelist__body">
                     <p>Escriba en el buscador el pokémon para ver su información completa:</p>
                     <div className="input-group mb-3">
-                        <input type="text" className="form-control" placeholder="Escriba aquí el pokémon" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleChangeInput} />
+                        <input type="text" className="form-control buscador-pokemon" placeholder="Escriba aquí el pokémon" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleChangeInput} />
                         <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={searchPokemon}>Buscar</button>
                     </div>
                     <div className="pt-5">
@@ -78,8 +79,8 @@ export default function PokemonList () {
                         }
                     </div>
                     { totalPages !== 0 &&
-                        <nav aria-label="Page navigation example">
-                            <ul className="pagination justify-content-center">
+                        <nav aria-label="Page navigation pokelist-pagination">
+                            <ul className="pagination justify-content-center flex-wrap">
                                 <li className={`page-item ${currentPage === 1 && 'disabled'}`}>
                                     <div 
                                         className="page-link"

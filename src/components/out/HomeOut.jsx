@@ -1,14 +1,19 @@
-import reactLogo from '../../assets/react.svg'
-import viteLogo from '../../../public/vite.svg'
-import { useState } from 'react'
+import AuthLogin from '../auth/AuthLogin'
+import { useAuth } from '../auth/AuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 export default function HomeOut () {
 
-    const [count, setCount] = useState(0)
+    const {usuario} = useAuth()
+
+    const navigate = useNavigate();
 
     return (
-        <div className='container'>
-            En construcción
-        </div>
+        <>
+            {
+                usuario ? navigate('/pokedex/pokemon-list') : <AuthLogin />
+            }
+            
+        </>
     )
 }

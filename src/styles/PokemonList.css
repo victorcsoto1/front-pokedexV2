@@ -1,3 +1,7 @@
+.pokelist__header {
+   text-align: center; 
+}
+
 .pokemon__card {
     box-shadow: 1px 1px 7px #A7A7A7;
     border: 1px solid #A7A7A7;
@@ -39,12 +43,30 @@
     padding: 4px 10px;
 }
 
+.buscador-pokemon:focus {
+    box-shadow: none;
+    border-color: #EF5350;
+}
+
+.page-link {
+    color: #EF5350;
+}
+
+.page-link.active {
+    border-color: #EF5350;
+    background-color: #EF5350;
+}
+
 .pokemon-type-box.normal {
     background-color: #A8A77A !important;
 }
 
 .pokemon-type-box.fire {
     background-color: #EE8130 !important;
+}
+
+.pokemon-type-box.water {
+    background-color: #6390F0 !important;
 }
 
 .pokemon-type-box.electric {
@@ -109,4 +131,19 @@
 
 .nav__gen li{
     cursor: pointer;
+}
+
+.nav__gen {
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+}
+
+.gen__tab {
+    width: max-content;
+}
+
+@media screen and (max-width: 768px) {
+    .pokelist__header {
+        font-size: 10px;
+    }
 }

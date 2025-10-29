@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { getPokemonInfo } from "../../services/pokeapiService"
 import "../../styles/PokemonList.css"
+import { getToken } from "../../utils/auth"
 
 export default function PokemonCard ({number, name, icon, url, setLoading}) {
 
@@ -8,10 +9,10 @@ export default function PokemonCard ({number, name, icon, url, setLoading}) {
 
     const goToPokemonInfo = () => {
         setLoading(true)
-        getPokemonInfo(url).then((resp) => {
+        getPokemonInfo(url, getToken()).then((resp) => {
             setLoading(false)
             localStorage.setItem('pokemoninfo', JSON.stringify(resp))
-            navigate('/pokemon-info')
+            navigate('/pokedex/pokemon-info')
         })
     }
 
