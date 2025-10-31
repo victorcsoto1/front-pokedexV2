@@ -20,10 +20,10 @@ export default function Header () {
                     <img src={pokeapiLogo} />
                 </div>
                 { usuario &&
-                    <div className="home__header__menu" onClick={logout}>
+                    <div className="home__header__menu">
                         <div className="home__header__menu__items">
-                            <span>Cerrar sesión</span>
-                            <span>Ver perfil</span>
+                            <span onClick={logout}>Cerrar sesión</span>
+                            <span onClick={() => goToPage('/pokedex/edit-profile')}>Ver perfil</span>
                         </div>
                     </div>
                 }

@@ -30,8 +30,7 @@
     align-items: center;
 }
 
-.button__info,
-.button__volver {
+.button__info {
     color: #FFFFFF;
     background-color: #EF5350;
     font-size: 13px;

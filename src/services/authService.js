@@ -79,3 +79,20 @@ export const cambiarPassword = async (obj) => {
         throw err
     }
 }
+
+export const editarPerfil = async (obj, token) => {
+    try {
+        const response = await fetch(`${URL_BACKEND}/auth/edit-profile`, {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({data: obj})
+        })
+        const json = response.json()
+        return json
+    } catch (err) {
+        throw err
+    }
+}

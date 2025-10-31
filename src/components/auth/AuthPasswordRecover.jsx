@@ -2,6 +2,7 @@ import { useState } from "react"
 import AuthPasswordRecoverUser from "./AuthPasswordRecoverUser"
 import AuthPasswordRecoverCodigo from "./AuthPasswordRecoverCodigo"
 import AuthPasswordRecoverNew from "./AuthPasswordRecoverNew"
+import "../../styles/auth.css"
 
 export default function AuthPasswordRecover () {
 

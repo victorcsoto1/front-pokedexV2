@@ -32,7 +32,7 @@ export default function AuthPasswordRecoverNew ({setEtapa, form, setForm}) {
             if (resp.mensaje) {
                 Swal.fire('Éxito', resp.mensaje, 'success')
                 setEtapa(1)
-                navigate('/')
+                navigate('/login')
             } else {
                 Swal.fire('Error', resp.error, 'error')
             }

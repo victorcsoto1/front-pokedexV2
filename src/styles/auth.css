@@ -5,7 +5,14 @@
     font-size: 15px;
 }
 
-.button__login:hover {
+.button__volver {
+    border-color: #EF5350;
+    background-color: #FFFFFF;
+    color: #EF5350;
+}
+
+.button__login:hover,
+.button__volver:hover {
     border-color: #EF5350;
 }
 
@@ -14,6 +21,9 @@
     flex-direction: column;
     align-items: center;
     padding-top: 40px;
+    padding-bottom: 40px;
+    max-width: 600px;
+    margin: auto;
 }
 
 .link__register,

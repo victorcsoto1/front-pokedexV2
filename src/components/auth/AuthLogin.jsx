@@ -66,7 +66,7 @@ export default function AuthLogin() {
             <h1>¡Bienvenido!</h1>
             <p>Inicie sesión para continuar</p>
             <form onSubmit={handleSubmit}>
-                <div className="row body__login">
+                <div className="row body__login" style={{ maxWidth: '500px' }}>
                     <div className="mb-3">
                         <label className="form-label">Correo</label>
                         <input className="form-control" name="email" type="text" onChange={handleInputChange} required />

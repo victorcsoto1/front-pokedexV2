@@ -5,6 +5,7 @@ import { registrar } from "../../services/authService";
 import { useNavigate } from "react-router-dom";
 import { useLoading } from "../../context/LoadingContext";
 import Swal from "sweetalert2";
+import "../../styles/auth.css"
 
 export default function AuthRegister () {
 
@@ -42,7 +43,7 @@ export default function AuthRegister () {
                 icon: 'success',
                 text: 'Te has registrado exitósamente.'
             })
-            navigate('/')
+            navigate('/login')
         })
     }
 

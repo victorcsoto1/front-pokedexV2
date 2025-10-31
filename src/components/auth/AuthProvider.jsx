@@ -18,7 +18,6 @@ export const AuthProvider = ({children}) => {
         } else {
             setUsuario(null)
             localStorage.removeItem('token')
-            navigate('/')
         }
     }, []);
 
@@ -26,12 +25,13 @@ export const AuthProvider = ({children}) => {
         localStorage.setItem('token', token);
         const decoded = parseJwt(token);
         setUsuario({ decoded });
+        navigate('/pokedex/pokemon-list')
     };
 
     const logout = () => {
         localStorage.removeItem('token');
         setUsuario(null);
-        navigate('/')
+        navigate('/login')
     };
 
     return (
