@@ -18,3 +18,11 @@
 .home__header__menu__items > span {
     cursor: pointer;
 }
+
+.profile__dropdown .dropdown-menu {
+    margin-top: 12px !important;
+}
+
+.profile__dropdown .dropdown-item {
+    cursor: pointer;
+}
