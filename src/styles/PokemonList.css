@@ -8,6 +8,7 @@
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 30px;
+    background-color: #FFFFFF;
 }
 
 .pokemon__card p {
@@ -24,6 +25,8 @@
 .pokemon__card__info {
     border: 1px solid #DEE2E6;
     border-radius: 0 0 10px 10px;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 7px #A7A7A7;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -42,9 +45,15 @@
     padding: 4px 10px;
 }
 
-.buscador-pokemon:focus {
+.buscador__pokemon > input:focus {
     box-shadow: none;
     border-color: #EF5350;
+}
+
+.buscador__pokemon > button {
+    border-color: #DEE2E6;
+    background-color: #FFFFFF;
+
 }
 
 .page-link {
@@ -139,6 +148,7 @@
 
 .gen__tab {
     width: max-content;
+    background-color: #FFFFFF;
 }
 
 @media screen and (max-width: 768px) {

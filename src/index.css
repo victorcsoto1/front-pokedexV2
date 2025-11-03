@@ -7,6 +7,12 @@ a:hover {
   color: #535bf2;
 }
 
+#root {
+  min-height: 100vh;
+  height: 100%;
+  background-color: #ced8e1;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

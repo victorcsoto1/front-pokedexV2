@@ -64,8 +64,8 @@ export default function PokemonList () {
                 </div>
                 <div className="pokelist__body">
                     <p>Escriba en el buscador el pokémon para ver su información completa:</p>
-                    <div className="input-group mb-3">
-                        <input type="text" className="form-control buscador-pokemon" placeholder="Escriba aquí el pokémon" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleChangeInput} />
+                    <div className="input-group buscador__pokemon mb-3">
+                        <input type="text" className="form-control" placeholder="Escriba aquí el pokémon" aria-label="Recipient's username" aria-describedby="button-addon2" onChange={handleChangeInput} />
                         <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={searchPokemon}>Buscar</button>
                     </div>
                     <div className="pt-5">
