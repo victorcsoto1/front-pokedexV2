@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom"
 import { getPokemonInfo } from "../../services/pokeapiService"
-import "../../styles/PokemonList.css"
 import { getToken } from "../../utils/auth"
 
 export default function PokemonCard ({number, name, icon, url, setLoading}) {

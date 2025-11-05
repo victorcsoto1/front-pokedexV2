@@ -38,26 +38,50 @@ export default function PokemonInfo () {
         spritesGenerationSelected.forEach((element, nombreVersion) => {
             if (nombreVersion.includes("-")) {
                 nombreVersion.split("-").forEach((version) => {
-                    arrayVersions.push(version)
+                    if(version !== "ultra")
+                        arrayVersions.push(version)
                 })
-            } else arrayVersions.push(nombreVersion)
-            arraySpritesVersion.push({
-                url: element.front_default,
-                version: nombreVersion
-            })
+            } else {
+                if (version === "viii") {
+                    arrayVersions.push("sword")
+                    arrayVersions.push("shield")
+                } else {
+                    arrayVersions.push(nombreVersion)
+                }
+            }
+            
+            if (version !== "vii" || nombreVersion !== "icons") {
+                arraySpritesVersion.push({
+                    url: (version === "vi" || version === "vii" || version === "viii") 
+                        ? pokemonInfo.sprites.other.showdown.front_default
+                        : element.front_default,
+                    version: nombreVersion
+                                .split('-')
+                                .filter(word => word.toLowerCase() !== "ultra")
+                                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                .join(' & ')
+                })
+            
+            }
         })
-        setPokemonSprites(arraySpritesVersion)
+        setPokemonSprites(arraySpritesVersion.filter(v => v.version !== "Omegaruby & Alphasapphire"))
 
         //Descripcion pokemon por version de la generacion seleccionada
         arrayDescriptions = !pokemonSpeciesDescription ? arrayDescriptions.filter(x => arrayVersions.includes(x.version.name)) : pokemonSpeciesDescription.filter(x => arrayVersions.includes(x.version.name))
 
         let arrayObjectDescriptions = []
-        arrayDescriptions.forEach((d) => {
+        if (arrayDescriptions.length === 0) {
             arrayObjectDescriptions.push({
-                version: d.version.name,
-                description: d.flavor_text.replace(/(\f)/gm, " ")
+                description: ""
             })
-        })
+        } else {
+            arrayDescriptions.forEach((d) => {
+                arrayObjectDescriptions.push({
+                    version: d.version.name,
+                    description: d.flavor_text.replace(/(\f)/gm, " ")
+                })
+            })
+        }
         setPokemonDescriptions(arrayObjectDescriptions)
 
         setPokemonAbilities([])
@@ -79,7 +103,6 @@ export default function PokemonInfo () {
     useEffect(() => {
         if (!pokemonInfo) return
         getPokemonSpecies(pokemonInfo.species.url, getToken()).then((resp) => {
-            console.log(resp)
             arrayDescriptions = resp.flavor_text_entries.filter(x => x.language.name === "en")
             setPokemonSpeciesDescription(arrayDescriptions)
             let generationName = resp.generation.name
@@ -119,7 +142,7 @@ export default function PokemonInfo () {
                                     return (
                                         <div key={index} className="sprite-pokemon text-center">
                                             <img src={sprite.url}/>
-                                            <p>{sprite.version} version</p>
+                                            <p>{genSelected === "viii" ? "Sword & Shield" : sprite.version} version</p>
                                         </div>
                                     )
                                 })}
@@ -142,7 +165,9 @@ export default function PokemonInfo () {
                                 <ul>
                                     { pokemonDescriptions.map((element) => {
                                         return (
-                                            <li><strong>{element.version.charAt(0).toUpperCase() + element.version.slice(1)} version: </strong>{element.description}</li>
+                                            element.description !== "" ?
+                                                <li><strong>{element.version.charAt(0).toUpperCase() + element.version.slice(1)} version: </strong>{element.description}</li>
+                                            : "Not available description of this pokémon for this generation."
                                         )
                                     })}
                                 </ul>
@@ -153,7 +178,7 @@ export default function PokemonInfo () {
                                     <ul>
                                         { pokemonAbilities.map((ability, index) => {
                                             return (
-                                                <li>{ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}: {ability.effect}</li>
+                                                <li><strong>{ability.name.charAt(0).toUpperCase() + ability.name.slice(1)}: </strong>{ability.effect}</li>
                                             )
                                         })}
                                     </ul>

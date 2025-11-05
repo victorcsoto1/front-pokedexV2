@@ -4,6 +4,7 @@ import { limitePokemon } from "../../environments/variables"
 import PokemonCard from "./PokemonCard"
 import { useLoading } from "../../context/LoadingContext"
 import { getToken } from "../../utils/auth"
+import "../../styles/PokemonList.css"
 
 export default function PokemonList () {
 
@@ -79,7 +80,7 @@ export default function PokemonList () {
                         }
                     </div>
                     { totalPages !== 0 &&
-                        <nav aria-label="Page navigation pokelist-pagination">
+                        <nav aria-label="Page navigation" className="pokelist-pagination">
                             <ul className="pagination justify-content-center flex-wrap">
                                 <li className={`page-item ${currentPage === 1 && 'disabled'}`}>
                                     <div 
