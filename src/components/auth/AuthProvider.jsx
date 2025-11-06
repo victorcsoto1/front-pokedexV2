@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getToken, isTokenValid, parseJwt } from "../../utils/auth";
 
 const AuthContext = createContext();
@@ -9,6 +9,7 @@ export const AuthProvider = ({children}) => {
     const [usuario, setUsuario] = useState(null);
 
     const navigate = useNavigate()
+    const location = useLocation()
 
     useEffect(() => {
         const token = getToken();
@@ -18,6 +19,9 @@ export const AuthProvider = ({children}) => {
         } else {
             setUsuario(null)
             localStorage.removeItem('token')
+            if (location.pathname.includes('/pokedex') || location.pathname === '/') {
+                navigate('/')
+            }
         }
     }, []);
 
