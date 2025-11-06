@@ -7,7 +7,7 @@ import { getToken } from "../../utils/auth"
 export default function PokemonInfo () {
 
     const [pokemonInfo, setPokemonInfo] = useState()
-    const [genSelected, setGenSelected] = useState("i")
+    const [genSelected, setGenSelected] = useState("0")
 
     const [pokemonSprites, setPokemonSprites] = useState([])
     const [pokemonAbilities, setPokemonAbilities] = useState([])
@@ -30,6 +30,7 @@ export default function PokemonInfo () {
 
     const handleChangeGeneration = async (version) => {
         if (!pokemonInfo) return
+        if (version === genSelected) return
         setGenSelected(version)
         let spritesGenerationSelected = new Map(Object.entries(pokemonInfo.sprites.versions["generation-" + version]))
         let arraySpritesVersion = []

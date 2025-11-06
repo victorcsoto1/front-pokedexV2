@@ -5,12 +5,6 @@
     font-size: 15px;
 }
 
-.button__volver {
-    border-color: #EF5350;
-    background-color: #FFFFFF;
-    color: #EF5350;
-}
-
 .button__login:hover,
 .button__volver:hover {
     border-color: #EF5350;
