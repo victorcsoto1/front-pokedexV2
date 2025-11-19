@@ -5,6 +5,7 @@ import PokemonCard from "./PokemonCard"
 import { useLoading } from "../../context/LoadingContext"
 import { getToken } from "../../utils/auth"
 import "../../styles/PokemonList.css"
+import Swal from "sweetalert2"
 
 export default function PokemonList () {
 
@@ -33,6 +34,9 @@ export default function PokemonList () {
         getFilteredPokemon(limitePokemon, textPokemon, getToken()).then((resp) => {
             setPokemonList(resp)
             setLoading(false)
+        }).catch((err) => {
+            Swal.fire('Error', 'Ocurrió un error al intentar obtener la lista de pokemon. Inténtelo más tarde.')
+            setLoading(false)
         })
     }
 
@@ -44,6 +48,9 @@ export default function PokemonList () {
         setLoading(true)
         getPokemonList(limitePokemon, getToken()).then((resp) => {
             setPokemonList(resp)
+            setLoading(false)
+        }).catch((err) => {
+            Swal.fire('Error', 'Ocurrió un error al intentar obtener la lista de pokemon. Inténtelo más tarde.')
             setLoading(false)
         })
     },[])

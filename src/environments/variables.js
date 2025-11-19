@@ -1,4 +1,5 @@
-export const URL_BACKEND = "http://localhost:8080/api"
+//export const URL_BACKEND = "http://localhost:8080/api"
+export const URL_BACKEND = "https://back-pokedex-api-22383646715.southamerica-east1.run.app/api"
 
 export const limitePokemon = 1302
 
